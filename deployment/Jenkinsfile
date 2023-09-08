@@ -13,11 +13,13 @@ pipeline {
                 git 'https://github.com/Sinchana22BS/devops-spring-groovy-pipeline.git'
 
                 // Run Maven on a Unix agent.
+                script{
                 if(isUnix()){
                 sh "mvn -Dmaven.test.failure.ignore=true clean package"
                 }
 				else{
 				bat "mvn -Dmaven.test.failure.ignore=true clean package"
+				}
 				}
 				
                 // To run Maven on a Windows agent, use

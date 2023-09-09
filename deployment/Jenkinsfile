@@ -48,8 +48,8 @@ pipeline {
                 // failed, record the test results and archive the jar file.
                 success {
                 	jacoco(
-                	execPattern: '**/build/jacoco/*.exec',
-                	classPattern: '**/build/classes/groovy/main',
+                	execPattern: '**/target/jacoco/*.exec',
+                	classPattern: '**/target/classes/com/myapp',
                 	sourcePattern: '**/src/main'
                 
         

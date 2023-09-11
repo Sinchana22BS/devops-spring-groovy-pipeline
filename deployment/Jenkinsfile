@@ -42,7 +42,24 @@ pipeline {
 				}
 				}
 				}
-				stage('Publish Artifactory') {
+
+   
+   			stage('SonarQubeStaticAnalysis') {
+steps {
+
+// Run Maven on a Unix agent.
+script{
+if(isUnix()){
+sh "mvn -Dmaven.test.failure.ignore=true sonar:sonar"
+               }    
+else{
+bat "mvn -Dmaven.test.failure.ignore=true sonar:sonar"
+}
+}
+}
+
+   }
+   				stage('Publish Artifactory') {
 steps {
 
 // Run Maven on a Unix agent.
